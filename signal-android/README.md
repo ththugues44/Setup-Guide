@@ -244,6 +244,14 @@ Q: Why did I need to change the Attachment Path?
 
 A: For now, I have no idea why you can't upload to a path except root, I've tried modifying every permission in AWS but to no avail. 
 
+Q: How did I make Maps works?
+
+A: On Android, search for `com.google.android.geo.API_KEY` and change the value below that line with your own Google Maps API Key.
+
+Q: How did I make Giphy/Sticker works?
+
+A: For now, sticker file is not available publicly. Also, Giphy need content proxy to works, for now the content proxy source code is still not being shared publicly.
+
 Q: What can I do so the attachments not uploaded to root bucket?
 
 A: You still need to do `Step 9`, but only remove the `attachments` part from `ATTACHMENT_UPLOAD_PATH`. Then modify your Signal-Server.

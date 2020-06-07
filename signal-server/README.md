@@ -2,6 +2,7 @@
 This guide is written by using Signal v2.92.
 
 ## Requirement
+
 * JDK 11
 * SSL Certificate for your domain
 * Google Recaptcha
@@ -9,14 +10,23 @@ This guide is written by using Signal v2.92.
 * Twilio
 * AWS
 
-1. Create your own `config.yml`, put it inside `signal-server/service/config/`. You can take a look at the <a href="https://github.com/madecanggih/Setup-Guide/blob/master/signal-server/example-signal.yml">example here</a>.
+## Installation Steps
 
-2.	Build the server (I suggest you keep the DskipTests if you do a modification)
+1. Before starting working let's clonned the source code:		
+
+   ```
+   git clone https://github.com/signalapp/Signal-Server.git && cd Signal-Server
+   ```
+
+2. Create your own `config.yml`, put it inside `signal-server/service/config/`. You can take a look at the <a href="https://github.com/aqnouch/Setup-Guide/blob/master/signal-server/example-signal.yml">example here</a>.
+
+3. Build the server
+
 ```
 mvn clean install -DskipTests
 ```
 
-3. Generate value for UnidentifiedDelivery
+3. Generate value for **UnidentifiedDelivery**
 
 You will get key pair using this command (keep the keypair, you will need it for Android and for the next step)
 ```
@@ -28,7 +38,7 @@ Use the Private key to generate certificate (key id can be random, i use 1234)
 java -jar service/target/TextSecureServer-2.92.jar certificate --key <priv_key_from_step_above> --id <the_key_ID>
 ```
 
-4.	Run postgres, redis, coturn (I suggest you use docker-compose)
+4.	Run **postgres**, **redis**, **coturn** (I suggest you use [signal-docker](https://github.com/aqnouch/Setup-Guide/tree/master/signal-docker))
 
 5.	Migrate databases
 ```
@@ -92,7 +102,7 @@ sudo nginx -s reload
 7. Run certbot to generate SSL Certificate
 ```
 certbot --nginx -d domain.com -d www.domain.com
-``` 
+```
 
 8. When asked `Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.` You are recommended to choose `2: Redirect`. After the process is done your certificate will be located in
 ```

@@ -1,7 +1,8 @@
 #!/bin/bash
 set -ev
 
-IP=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'`
+#IP=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'`
+IP=`ip route get 8.8.8.8 | head -1 | cut -d' ' -f7`
 # echo $IP
 pushd `dirname $0`
 

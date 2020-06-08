@@ -1,5 +1,6 @@
-# Signal Server
-This guide is written by using Signal v2.92.
+# Setup Guide: Signal Server
+
+*This guide is written by using Signal v2.92.*
 
 ## Requirement
 
@@ -12,7 +13,7 @@ This guide is written by using Signal v2.92.
 
 ## Installation Steps
 
-1. Before starting working let's clonned the source code:		
+1. First clone the server source code:
 
    ```
    git clone https://github.com/signalapp/Signal-Server.git && cd Signal-Server
@@ -33,34 +34,34 @@ You will get key pair using this command (keep the keypair, you will need it for
 java -jar service/target/TextSecureServer-2.92.jar certificate -ca
 ```
 
-Use the Private key to generate certificate (key id can be random, i use 1234)
+Use the Private key to generate certificate (id can be random, i use 1234)
 ```
-java -jar service/target/TextSecureServer-2.92.jar certificate --key <priv_key_from_step_above> --id <the_key_ID>
+java -jar service/target/TextSecureServer-2.92.jar certificate --key <priv_key_from_step_above> --id 1234
 ```
 
 4.	Run **postgres**, **redis**, **coturn** (I suggest you use [signal-docker](https://github.com/aqnouch/Setup-Guide/tree/master/signal-docker))
 
-5.	Migrate databases
+5.	Migrate databases:
 ```
-java -jar service/target/TextSecureServer-2.92.jar abusedb migrate service/config/config.yml
 java -jar service/target/TextSecureServer-2.92.jar accountdb migrate service/config/config.yml
 java -jar service/target/TextSecureServer-2.92.jar keysdb migrate service/config/config.yml
 java -jar service/target/TextSecureServer-2.92.jar messagedb migrate service/config/config.yml
+java -jar service/target/TextSecureServer-2.92.jar abusedb migrate service/config/config.yml
 ```
 
-6.	Run the server (config.yml is from step 1)
+6.	Run the server
 ```
 java -jar service/target/TextSecureServer-2.92.jar server service/config/config.yml
 ```
 
-7. To run the server in the background (run continously), use nohup
+7. To run the server as daemon, use nohup
 ```
 nohup java -jar service/target/TextSecureServer-2.92.jar server service/config/config.yml > /dev/null &
 ```
 
 ## Configuring Nginx & Generating SSL Certificate with Let's Encrypt
 
-If you already has your SSL Certificate, you can use <a href="https://github.com/madecanggih/Setup-Guide/blob/master/signal-server/example-nginx.conf">the example nginx config</a> on the `Step 4` and skip the `Step 6 - 9`.
+If you already has your SSL Certificate, you can use [the example nginx config](https://github.com/madecanggih/Setup-Guide/blob/master/signal-server/example-nginx.conf)on the `Step 4` and skip the `Step 6 - 9`.
 
 1. Install nginx on your system
 ```

@@ -11,11 +11,11 @@ On this repository, you will find guides about Signal Setup that might help peop
 ## Content
 What's proven works
 * [Signal Server](https://github.com/aqnouch/Setup-Guide/tree/master/signal-server)
-* Signal Dependency on Docker (PostgreSQL & Redis)
+* (Signal Dependency on Docker [PostgreSQL & Redis)](https://github.com/aqnouch/Setup-Guide/tree/master/signal-docker)
 * Turn Server (CoTurn)
 * Nginx Server (Port Forwarding HTTPS to Signal Server Port)
 * Signal Android
-* Signal Desktop
+* [Signal Desktop](https://github.com/aqnouch/Setup-Guide/tree/master/signal-android)
 * Signal IOS
 
 Work in progress
@@ -37,7 +37,7 @@ A: I tried it here <a href="https://github.com/madecanggih/Setup-Guide/tree/mast
 
 Q: Can I disable / change Twilio? (by getting the generated OTP on the server)
 
-A: Yes, it is possible, you need to change TwilioSmsSender Class, see example on <a href="https://github.com/madecanggih/Setup-Guide/tree/master/signal-server-no-twilio">Signal Server Without Twilio</a>.
+A: Yes, it is possible, you need to change TwilioSmsSender Class.
 
 Q: Can I use Signal in localhost / internal IP / self-signed certificate (by trusting all certificate)
 

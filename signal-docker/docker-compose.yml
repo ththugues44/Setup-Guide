@@ -1,26 +1,26 @@
 version: '2.2'
 services:
-  signal_keys_database:
+  signal_accounts_database:
     image:          postgres:11
-    container_name: postgres_keys_database
+    container_name: postgres_accounts_database
     restart:        always
     environment:
       POSTGRES_USER:     postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB:       signal
+      POSTGRES_DB:       accountdb
       PGDATA:            /var/lib/postgresql/data/pgdata
     ports:
       - '5431:5432'
     volumes:
-      - ./postgres_keys_database:/var/lib/postgresql/data
-  signal_database:
+      - ./postgres_accounts_database:/var/lib/postgresql/data
+  signal_keys_database:
     image:          postgres:11
-    container_name: postgres_database
+    container_name: signal_keys_database
     restart:        always
     environment:
       POSTGRES_USER:     postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB:       signal
+      POSTGRES_DB:       keysdb
       PGDATA:            /var/lib/postgresql/data/pgdata
     ports:
       - '5432:5432'
@@ -33,7 +33,7 @@ services:
     environment:
       POSTGRES_USER:     postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB:       signal
+      POSTGRES_DB:       messagedb
       PGDATA:            /var/lib/postgresql/data/pgdata
     ports:
       - '5433:5432'
@@ -46,7 +46,7 @@ services:
     environment:
       POSTGRES_USER:     postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB:       signal
+      POSTGRES_DB:       abusedb
       PGDATA:            /var/lib/postgresql/data/pgdata
     ports:
       - '5434:5432'

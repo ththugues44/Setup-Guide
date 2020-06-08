@@ -1,0 +1,5 @@
+signal-docker/postgres_message_store/pgdata/
+signal-docker/postgres_accounts_database/pgdata/
+signal-docker/postgres_database/pgdata/
+signal-docker/postgres_abuse_database/pgdata/
+

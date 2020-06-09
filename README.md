@@ -1,21 +1,20 @@
 # Setup Guide for Signal
-On this repository, you will find guides about Signal Setup that might help people who want to run their own signal server.
+On this repository, you will find guides about Signal Setup that will help you run your own signal server.
 
 ## Requirements
-* Twilio (For SMS OTP, can be by passsed by priting the OTP to another means to user)
+* Twilio (For SMS OTP)
 * Amazon Web Service (For Profile Picture / Avatar, Attachments, and CDS Queue. Can be subtituted with MinIO & LocalStack)
-* Firebase (For push notification, if not used, the notification will not work correctly)
-* SSL Certificate of your server's domain (For secure communication, can be bypassed but it will be less secure)
+* Firebase (For push notifications)
 * Google Recaptcha (For anti-spam in authentication)
 
 ## Content
 What's proven works
 * [Signal Server](https://github.com/aqnouch/Setup-Guide/tree/master/signal-server)
-* (Signal Dependency on Docker [PostgreSQL & Redis)](https://github.com/aqnouch/Setup-Guide/tree/master/signal-docker)
-* Turn Server (CoTurn)
+* [Server dependencies: PostgreSQL & Redis](https://github.com/aqnouch/Setup-Guide/tree/master/signal-docker)
+* [Turn Server](https://github.com/aqnouch/Setup-Guide/tree/master/turn-server)
 * Nginx Server (Port Forwarding HTTPS to Signal Server Port)
-* Signal Android
-* [Signal Desktop](https://github.com/aqnouch/Setup-Guide/tree/master/signal-android)
+* [Signal Android](https://github.com/aqnouch/Setup-Guide/tree/master/signal-android)
+* Signal Desktop
 * Signal IOS
 
 Work in progress

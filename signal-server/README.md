@@ -13,7 +13,7 @@
 
 ## Installation Steps
 
-1. First clone the server source code:
+1. First clone the project source code:
 
    ```
    git clone https://github.com/signalapp/Signal-Server.git && cd Signal-Server

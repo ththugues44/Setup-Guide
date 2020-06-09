@@ -6,10 +6,16 @@ This guide is written by using Signal-Android branch Master version 4.53.6
 * JRE 1.8.0 
 * JVM OpenJDK 64
 * SDK 28
-* NDK (Optional, only if you want to make custom package)
+* NDK
 
-## How to
-1. Convert your server ssl cert to pkcs#12. Change the `-in` and `-inkey` argument to your public and private key. If you generate using Let's Encrypt, the public key is the `fullchain.pem` and the private key is the `privkey.pem`
+## Installation Steps
+1. First clone the project source code:
+
+```
+git clone https://github.com/signalapp/Signal-Android.git && cd Signal-Android
+```
+
+2. Convert your server ssl cert to pkcs#12. Change the `-in` and `-inkey` argument to your public and private key. If you generate using Let's Encrypt, the public key is the `fullchain.pem` and the private key is the `privkey.pem`
 ```
 openssl pkcs12 -export -out keystore.pkcs12 -in public_key_or_certificate -inkey private_key
 ```

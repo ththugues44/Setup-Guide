@@ -15,12 +15,23 @@ This guide is written by using Signal-Android branch Master version 4.53.6
 git clone https://github.com/signalapp/Signal-Android.git && cd Signal-Android
 ```
 
-2. Convert your server ssl cert to pkcs#12. Change the `-in` and `-inkey` argument to your public and private key. If you generate using Let's Encrypt, the public key is the `fullchain.pem` and the private key is the `privkey.pem`
+2. Comment out `distributionSha256Sum` on `gradle/wrapper/gradle-wrapper.properties`
+
+   ```
+   distributionBase=GRADLE_USER_HOME
+   distributionPath=wrapper/dists
+   # distributionSha256Sum=027fdd265d277bae65a0d349b6b8da02135b0b8e14ba891e26281fa877fe37a2
+   distributionUrl=https\://services.gradle.org/distributions/gradle-5.6.2-all.zip
+   zipStoreBase=GRADLE_USER_HOME
+   zipStorePath=wrapper/dists
+   ```
+
+3. Convert your server ssl cert to pkcs#12. Change the `-in` and `-inkey` argument to your public and private key. If you generate using Let's Encrypt, the public key is the `fullchain.pem` and the private key is the `privkey.pem`
 ```
 openssl pkcs12 -export -out keystore.pkcs12 -in public_key_or_certificate -inkey private_key
 ```
 
-2. Use 'Keystore Explorer’ (In MacOS, you can try using another software in other OS), edit `whisper.store` files (the password is "whisper" without quote), insert your pk12 certificate there. If you use AWS CDN Cloudfront, you also need to put Cloudfront's certificate there
+2. Use 'Keystore Explorer’, edit `whisper.store` files (the password is "whisper" without quote), insert your pk12 certificate there. If you use AWS CDN Cloudfront, you also need to put Cloudfront's certificate there
 
 3. Open the project in Android Studio (Open, not Import).
 
@@ -61,26 +72,23 @@ defaultConfig {
 ```
 
 5. update `UNIDENTIFIED_SENDER_TRUST_ROOT` (value is Public Key from when creating UnidentifiedDelivery of server’s config.yml)
+6. Download `google-service.json` from Firebase, put it inside `app/`.
+7. Update `app/src/main/res/values/firebase_messaging.xml` according to value from `google-service.json`*
+8. Update `ATTACHMENT_DOWNLOAD_PATH` and `ATTACHMENT_UPLOAD_PATH` in `libsignal/service/src/main/java/org/whispersystems/signalservice/internal/push/PushServiceSocket.java` by deleting ‘attachments/‘ so attachment will be uploaded in root ( / ). If you don't want the attachments to be uploaded to root bucket, check the FAQ part of this guide.
+9. Sync your project then build.
 
 
-6. Comment out `distributionSha256Sum` on `gradle/wrapper/gradle-wrapper.properties`
-    ```
-    distributionBase=GRADLE_USER_HOME
-    distributionPath=wrapper/dists
-    # distributionSha256Sum=027fdd265d277bae65a0d349b6b8da02135b0b8e14ba891e26281fa877fe37a2
-    distributionUrl=https\://services.gradle.org/distributions/gradle-5.6.2-all.zip
-    zipStoreBase=GRADLE_USER_HOME
-    zipStorePath=wrapper/dists
-    ```
-7. Download `google-service.json` from Firebase, put it inside `app/`.
 
-8. Update `app/src/main/res/values/firebase_messaging.xml` according to value from `google-service.json`
 
-9. Update `ATTACHMENT_DOWNLOAD_PATH` and `ATTACHMENT_UPLOAD_PATH` in `libsignal/service/src/main/java/org/whispersystems/signalservice/internal/push/PushServiceSocket.java` by deleting ‘attachments/‘ so attachment will be uploaded in root ( / ). If you don't want the attachments to be uploaded to root bucket, check the FAQ part of this guide.
 
-10. Sync your project then build.
+
+
+
+
+
 
 ## Custom Server
+
 Change `app/build.gradle` to use your server. Always use https and without trailing slash on the url.
 ```
 // app/build.gradle

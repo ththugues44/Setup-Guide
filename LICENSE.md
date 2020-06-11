@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2020 Made Indra
+Copyright for portions this ocumentation are held by Indra, 2020. All other copyright for this documentation are held by AQNOUCH Mohammed
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

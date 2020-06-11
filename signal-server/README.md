@@ -59,7 +59,7 @@ java -jar service/target/TextSecureServer-2.92.jar server service/config/config.
 nohup java -jar service/target/TextSecureServer-2.92.jar server service/config/config.yml > /dev/null &
 ```
 
-## Configuring Nginx & Generating SSL Certificate with Let's Encrypt
+## Nginx reverse proxy
 
 If you already has your SSL Certificate, you can use [the example nginx config](https://github.com/madecanggih/Setup-Guide/blob/master/signal-server/example-nginx.conf)on the `Step 4` and skip the `Step 6 - 9`.
 
@@ -68,10 +68,10 @@ If you already has your SSL Certificate, you can use [the example nginx config](
 sudo apt install nginx     
 ```
 
-2. Install Certbot for Let's Encrypt
+2. generate a self signed certificate(change domain.com to your domaine)
 ```
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt-get install python-certbot-nginx
+cd /etc/nginx
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/cert.key -out /etc/nginx/cert.crt -subj "/C=GB/ST=London/L=London/O=AKdev/OU=IT_Department/CN=domain.com"
 ```
 
 3. Allow Nginx to be accessed from outside using Firewall. The `Nginx Full` argument will create a rule that allow port 80 and port 443, you can change it to `Nginx HTTP` to allow only port 80 or change it to `Nginx HTTPS` to allow only port 443
@@ -79,21 +79,7 @@ sudo apt-get install python-certbot-nginx
 sudo ufw allow 'Nginx Full'
 ```
 
-4. Create your server configuration in `/etc/nginx/sites-available/domain.com`. 
-```
-server {
-  listen 80;
-  listen [::]:80;
-
-  server_name domain.com, www.domain.com;
-}
-```
-
-5. Create a symbolic link from your configuration to sites-enabled.
-```
-sudo ln -s /etc/nginx/sites-available/domain.com /etc/nginx/sites-enabled/domain.com
-```
-
+4. Next you will need to edit the default Nginx configuration file in `/etc/nginx/sites-enabled/default`, using the [example nginx config](https://github.com/aqnouch/Setup-Guide/blob/master/signal-server/example-nginx.conf)
 6. Reload your nginx to apply the new configuration
 ```
 sudo nginx -s reload
@@ -106,14 +92,6 @@ certbot --nginx -d domain.com -d www.domain.com
 ```
 
 8. When asked `Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.` You are recommended to choose `2: Redirect`. After the process is done your certificate will be located in
-```
-etc
-└── letsencrypt
-    └── live 
-        └── domain.com
-            └── *.pem
-```
-
 9. Update your nginx config to suits your need, you can take a look at the <a href="https://github.com/madecanggih/Setup-Guide/blob/master/signal-server/example-nginx.conf">example here</a>.
 
 10. Check if your configuration is correct
@@ -125,8 +103,6 @@ sudo nginx -t
 ```
 sudo nginx -s reload
 ```
-
-If you are having a hard time configuring NginX manually, you can try generating configuration file by using <a href="https://nginxconfig.io/">nginxconfig.io</a>.
 
 ## FAQ
 Q: How do I get Recapthca?

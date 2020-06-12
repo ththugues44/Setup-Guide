@@ -9,11 +9,11 @@ On this repository, you will find guides about Signal Setup that will help you r
 
 ## Content
 What's proven works
-* [Signal Server](https://github.com/aqnouch/Setup-Guide/tree/master/signal-server)
-* [Server dependencies: PostgreSQL & Redis](https://github.com/aqnouch/Setup-Guide/tree/master/signal-docker)
-* [Turn Server](https://github.com/aqnouch/Setup-Guide/tree/master/turn-server)
+* [Signal Server](/tree/master/signal-server)
+* [Server dependencies: PostgreSQL & Redis](/tree/master/signal-docker)
+* [Turn Server](/tree/master/turn-server)
 * Nginx Server (Port Forwarding HTTPS to Signal Server Port)
-* [Signal Android](https://github.com/aqnouch/Setup-Guide/tree/master/signal-android)
+* [Signal Android](/tree/master/signal-android)
 * Signal Desktop
 * Signal IOS
 

@@ -26,14 +26,8 @@ git clone https://github.com/signalapp/Signal-Android.git && cd Signal-Android
    zipStorePath=wrapper/dists
    ```
 
-3. Convert your server ssl cert to pkcs#12. Change the `-in` and `-inkey` argument to your public and private key. If you generate using Let's Encrypt, the public key is the `fullchain.pem` and the private key is the `privkey.pem`
-```
-openssl pkcs12 -export -out keystore.pkcs12 -in public_key_or_certificate -inkey private_key
-```
-
-2. Use 'Keystore Explorer’, edit `whisper.store` files (the password is "whisper" without quote), insert your pk12 certificate there. If you use AWS CDN Cloudfront, you also need to put Cloudfront's certificate there
-
-3. Open the project in Android Studio (Open, not Import).
+3. Use 'Keystore Explorer’, edit `whisper.store` files (the password is "whisper" without quote), insert your server certificate there. If you use AWS CDN Cloudfront, you also need to put Cloudfront's certificate there
+3. Open the project in Android Studio.
 
 4. Update URL with own server in `app/build.gradle` (be sure to use https and don't include trailing slash). If you are having a hard time finding your `Cloudfront domain`, you can find it in <a href="https://console.aws.amazon.com/cloudfront/">CloudFront console</a> formated as `random-id.cloudfront.net`.
 ```
@@ -76,40 +70,6 @@ defaultConfig {
 7. Update `app/src/main/res/values/firebase_messaging.xml` according to value from `google-service.json`*
 8. Update `ATTACHMENT_DOWNLOAD_PATH` and `ATTACHMENT_UPLOAD_PATH` in `libsignal/service/src/main/java/org/whispersystems/signalservice/internal/push/PushServiceSocket.java` by deleting ‘attachments/‘ so attachment will be uploaded in root ( / ). If you don't want the attachments to be uploaded to root bucket, check the FAQ part of this guide.
 9. Sync your project then build.
-
-
-
-
-
-
-
-
-
-
-
-## Custom Server
-
-Change `app/build.gradle` to use your server. Always use https and without trailing slash on the url.
-```
-// app/build.gradle
-
-        buildConfigField "long", "BUILD_TIMESTAMP", getLastCommitTimestamp() + "L"
-        buildConfigField "String", "SIGNAL_URL", "\"https://domain.com\""
-        buildConfigField "String", "STORAGE_URL", "\"https://domain.com\""
-        buildConfigField "String", "SIGNAL_CDN_URL", "\"https://your-own.cloudfrontnet\""
-        buildConfigField "String", "SIGNAL_CONTACT_DISCOVERY_URL", "\"https://domain.com\""
-        buildConfigField "String", "SIGNAL_SERVICE_STATUS_URL", "\"https://domain.com\""
-        buildConfigField "String", "SIGNAL_KEY_BACKUP_URL", "\"https://domain.com\""
-        buildConfigField "String", "CONTENT_PROXY_HOST", "\"https://domain.com\""
-        buildConfigField "int", "CONTENT_PROXY_PORT", "443"
-        buildConfigField "String", "USER_AGENT", "\"OWA\""
-        buildConfigField "boolean", "DEV_BUILD", "false"
-        buildConfigField "String", "MRENCLAVE", "\"cd6cfc342937b23b1bdd3bbf9721aa5615ac9ff50a75c5527d441cd3276826c9\""
-        buildConfigField "String", "KEY_BACKUP_ENCLAVE_NAME", "\"f2e2a5004794a6c1bac5c4949eadbc243dd02e02d1a93f10fe24584fb70815d8\""
-        buildConfigField "String", "KEY_BACKUP_MRENCLAVE", "\"f51f435802ada769e67aaf5744372bb7e7d519eecf996d335eb5b46b872b5789\""
-        buildConfigField "String", "UNIDENTIFIED_SENDER_TRUST_ROOT", "\"CHANGE-TO-YOUR-UNIDENTIFIED-DELIVERY-PUBLIC-KEY\""
-
-```
 
 ## Custom Package Name
 To create your own Signal-based Chat application, you need to rename the package. This is to prevent your app conflicting with signal on Play Store and on user's phone.

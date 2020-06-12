@@ -3,3 +3,6 @@ signal-docker/postgres_accounts_database/pgdata/
 signal-docker/postgres_database/pgdata/
 signal-docker/postgres_abuse_database/pgdata/
 
+signal-docker/redis_master/dump.rdb
+signal-docker/redis_slave/dump.rdb
+

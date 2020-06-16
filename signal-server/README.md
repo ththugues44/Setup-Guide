@@ -39,7 +39,7 @@ Use the Private key to generate certificate (id can be random, i use 1234)
 java -jar service/target/TextSecureServer-2.92.jar certificate --key <priv_key_from_step_above> --id 1234
 ```
 
-4.	Run **postgres**, **redis**, **coturn** (I suggest you use [signal-docker](https://github.com/aqnouch/Setup-Guide/tree/master/signal-docker))
+4.	Run **postgres**, **redis**, **coturn** (I suggest you use [signal-docker](../master/signal-docker))
 
 5.	Migrate databases:
 ```
@@ -59,9 +59,7 @@ java -jar service/target/TextSecureServer-2.92.jar server service/config/config.
 nohup java -jar service/target/TextSecureServer-2.92.jar server service/config/config.yml > /dev/null &
 ```
 
-## Nginx reverse proxy
-
-If you already has your SSL Certificate, you can use [the example nginx config](../master/signal-server/example-nginx.conf)on the `Step 4` and skip the `Step 6 - 9`.
+## Nginx Reverse Proxy
 
 1. Install nginx on your system
 ```

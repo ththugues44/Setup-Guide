@@ -19,7 +19,7 @@
 git clone https://github.com/signalapp/Signal-Server.git && cd Signal-Server
 ```
 
-2. Create your own `config.yml`, put it inside `signal-server/service/config/`. You can take a look at the <a href="https://github.com/aqnouch/Setup-Guide/blob/master/signal-server/example-signal.yml">example here</a>.
+2. Create your own `config.yml`, put it inside `signal-server/service/config/`. You can take a look at the [example here](../master/signal-server/example-signal.yml).
 
 3. Build the server
 

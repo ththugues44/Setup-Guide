@@ -1,5 +1,3 @@
-signal.yml	
-
 twilio: # Twilio gateway configuration
   accountId:    loremipsum # Change this to your account id
   accountToken: loremipsum # Change this to your token

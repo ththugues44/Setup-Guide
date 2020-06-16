@@ -3,17 +3,17 @@ On this repository, you will find guides about Signal Setup that will help you r
 
 ## Requirements
 * Twilio (For SMS OTP)
-* Amazon Web Service (For Profile Picture / Avatar, Attachments, and CDS Queue. Can be subtituted with MinIO & LocalStack)
+* Amazon Web Service (For Profile Picture / Avatar, Attachments, and CDS Queue. Can be subtituted with [MinIO](../master/signal-minio) & LocalStack)
 * Firebase (For push notifications)
 * Google Recaptcha (For anti-spam in authentication)
 
 ## Content
 What's proven works
 * [Signal Server](../master/signal-server)
-* [Server dependencies: PostgreSQL & Redis](https://github.com/aqnouch/Setup-Guide/tree/master/signal-docker)
-* [Turn Server](https://github.com/aqnouch/Setup-Guide/tree/master/turn-server)
+* [Server dependencies: PostgreSQL & Redis](../master/signal-docker)
+* [Turn Server](../master/turn-server)
 * Nginx Server (Port Forwarding HTTPS to Signal Server Port)
-* [Signal Android](https://github.com/aqnouch/Setup-Guide/tree/master/signal-android)
+* [Signal Android](../master/signal-android)
 * Signal Desktop
 * Signal IOS
 

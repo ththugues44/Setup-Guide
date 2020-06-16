@@ -17,14 +17,14 @@ git clone https://github.com/signalapp/Signal-Android.git && cd Signal-Android
 
 2. Comment out `distributionSha256Sum` on `gradle/wrapper/gradle-wrapper.properties`
 
-   ```
-   distributionBase=GRADLE_USER_HOME
-   distributionPath=wrapper/dists
-   # distributionSha256Sum=027fdd265d277bae65a0d349b6b8da02135b0b8e14ba891e26281fa877fe37a2
-   distributionUrl=https\://services.gradle.org/distributions/gradle-5.6.2-all.zip
-   zipStoreBase=GRADLE_USER_HOME
-   zipStorePath=wrapper/dists
-   ```
+```
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+#distributionSha256Sum=027fdd265d277bae65a0d349b6b8da02135b0b8e14ba891e26281fa877fe37a2
+distributionUrl=https\://services.gradle.org/distributions/gradle-5.6.2-all.zip
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+```
 
 3. Use 'Keystore Explorer’, edit `whisper.store` files (the password is "whisper" without quote), insert your server certificate there. If you use AWS CDN Cloudfront, you also need to put Cloudfront's certificate there
 3. Open the project in Android Studio.

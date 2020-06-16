@@ -4,8 +4,8 @@
 
 ## Requirement
 
-* JDK 11
-* SSL Certificate for your domain
+* Java SE 14 
+* Domaine name
 * Google Recaptcha
 * Firebase Cloud Messaging (It used to be GCM)
 * Twilio
@@ -15,9 +15,9 @@
 
 1. First clone the project source code:
 
-   ```
-   git clone https://github.com/signalapp/Signal-Server.git && cd Signal-Server
-   ```
+```
+git clone https://github.com/signalapp/Signal-Server.git && cd Signal-Server
+```
 
 2. Create your own `config.yml`, put it inside `signal-server/service/config/`. You can take a look at the <a href="https://github.com/aqnouch/Setup-Guide/blob/master/signal-server/example-signal.yml">example here</a>.
 
@@ -61,14 +61,14 @@ nohup java -jar service/target/TextSecureServer-2.92.jar server service/config/c
 
 ## Nginx reverse proxy
 
-If you already has your SSL Certificate, you can use [the example nginx config](https://github.com/madecanggih/Setup-Guide/blob/master/signal-server/example-nginx.conf)on the `Step 4` and skip the `Step 6 - 9`.
+If you already has your SSL Certificate, you can use [the example nginx config](../master/signal-server/example-nginx.conf)on the `Step 4` and skip the `Step 6 - 9`.
 
 1. Install nginx on your system
 ```
 sudo apt install nginx     
 ```
 
-2. generate a self signed certificate(change domain.com to your domaine)
+2. generate a self signed certificate(change **domain.com** to your own domaine)
 ```
 cd /etc/nginx
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/cert.key -out /etc/nginx/cert.crt -subj "/C=GB/ST=London/L=London/O=AKdev/OU=IT_Department/CN=domain.com"
@@ -79,7 +79,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/cert.key 
 sudo ufw allow 'Nginx Full'
 ```
 
-4. Next you will need to edit the default Nginx configuration file in `/etc/nginx/sites-enabled/default`, using the [example nginx config](https://github.com/aqnouch/Setup-Guide/blob/master/signal-server/example-nginx.conf)
+4. Next you will need to edit the default Nginx configuration file in `/etc/nginx/sites-enabled/default`, using the [example nginx config](../master/signal-server/example-nginx.conf)
 6. Reload your nginx to apply the new configuration
 ```
 sudo nginx -s reload
@@ -92,7 +92,7 @@ certbot --nginx -d domain.com -d www.domain.com
 ```
 
 8. When asked `Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.` You are recommended to choose `2: Redirect`. After the process is done your certificate will be located in
-9. Update your nginx config to suits your need, you can take a look at the <a href="https://github.com/madecanggih/Setup-Guide/blob/master/signal-server/example-nginx.conf">example here</a>.
+9. Update your nginx config to suits your need, you can take a look at the [example here](../master/signal-server/example-nginx.conf).
 
 10. Check if your configuration is correct
 ```
@@ -107,11 +107,11 @@ sudo nginx -s reload
 ## FAQ
 Q: How do I get Recapthca?
 
-A: You register for <a href="https://www.google.com/recaptcha/intro/v3.html">Google Recaptcha v3</a>, put your server's domain there.
+A: You register for [Google Recaptcha v3](https://www.google.com/recaptcha/intro/v3.html), put your server's domain there.
 
 Q: How do I get GCM?
 
-A: Setup <a href="https://firebase.google.com/">Firebase Cloud Messaging</a>, you will get the key from there.
+A: Setup [Firebase Cloud Messaging](https://firebase.google.com/), you will get the key from there.
 
 Q: What AWS service do i need?
 

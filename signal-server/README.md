@@ -83,7 +83,6 @@ sudo ufw allow 'Nginx Full'
 6. Reload your nginx to apply the new configuration
 ```
 sudo nginx -s reload
-
 ```
 
 7. Run certbot to generate SSL Certificate

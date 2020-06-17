@@ -1,6 +1,6 @@
 # Setup Guide: Signal Server
 
-*This guide is written by using Signal v2.92.*
+*This guide is written by using Signal **v2.92**.*
 
 ## Requirement
 

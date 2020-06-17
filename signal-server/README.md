@@ -40,8 +40,8 @@ java -jar service/target/TextSecureServer-2.92.jar certificate --key <priv_key_f
 ```
 
 4.	Run **postgres**, **redis**, **coturn** (I suggest you use [signal-docker](../master/signal-docker))
-
-5.	Migrate databases:
+5.	Create databases ()
+6.	Migrate databases:
 ```
 java -jar service/target/TextSecureServer-2.92.jar accountdb migrate service/config/config.yml
 java -jar service/target/TextSecureServer-2.92.jar keysdb migrate service/config/config.yml

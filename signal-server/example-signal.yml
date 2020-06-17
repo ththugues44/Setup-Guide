@@ -103,25 +103,25 @@ accountsDatabase:
   driverClass: org.postgresql.Driver
   user:        postgres
   password:    postgres
-  url:         jdbc:postgresql://127.0.0.1:5431/signal
+  url:         jdbc:postgresql://127.0.0.1:5431/accountdb
 
 keysDatabase:
   driverClass: org.postgresql.Driver
   user:        postgres
   password:    postgres
-  url:         jdbc:postgresql://127.0.0.1:5432/signal
+  url:         jdbc:postgresql://127.0.0.1:5432/keysdb
 
 messageStore:
   driverClass: org.postgresql.Driver
   user:        postgres
   password:    postgres
-  url:         jdbc:postgresql://127.0.0.1:5433/signal
+  url:         jdbc:postgresql://127.0.0.1:5433/messagedb
 
 abuseDatabase:
   driverClass: org.postgresql.Driver
   user:        postgres
   password:    postgres
-  url:         jdbc:postgresql://127.0.0.1:5434/signal
+  url:         jdbc:postgresql://127.0.0.1:5434/abusedb
 
 gcm:
   senderId: 874271879526 # Change this to your FCM Sender ID

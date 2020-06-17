@@ -26,9 +26,7 @@ zipStoreBase=GRADLE_USER_HOME
 zipStorePath=wrapper/dists
 ```
 
-3. Use 'Keystore Explorer’, edit `whisper.store` files (the password is "whisper" without quote), insert your server certificate there. If you use AWS CDN Cloudfront, you also need to put Cloudfront's certificate there
-3. Open the project in Android Studio.
-
+3. Use 'Keystore Explorer’, edit `whisper.store` files (the password is "whisper" without quote), insert your all your server certificates there. 
 4. Update URL with own server in `app/build.gradle` (be sure to use https and don't include trailing slash). If you are having a hard time finding your `Cloudfront domain`, you can find it in <a href="https://console.aws.amazon.com/cloudfront/">CloudFront console</a> formated as `random-id.cloudfront.net`.
 ```
 ...

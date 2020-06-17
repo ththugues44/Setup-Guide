@@ -67,9 +67,24 @@ sudo apt install nginx
 ```
 
 2. generate a self signed certificate(change **domain.com** to your own domaine)
+
 ```
-cd /etc/nginx
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/cert.key -out /etc/nginx/cert.crt -subj "/C=GB/ST=London/L=London/O=AKdev/OU=IT_Department/CN=domain.com"
+openssl genrsa -out /etc/nginx/cert.key 2048
+```
+
+Create the config file configuration.conf:
+
+```
+[req]
+distinguished_name=req
+[SAN]
+subjectAltName=DNS:domain.com
+```
+
+And the certificate:
+
+```
+openssl req -new -x509 -key /etc/nginx/cert.key -out /etc/nginx/cert.crt -days 3650 -subj /CN=domain.com -extensions SAN -config 'configuration.conf'
 ```
 
 3. Allow Nginx to be accessed from outside using Firewall. The `Nginx Full` argument will create a rule that allow port 80 and port 443, you can change it to `Nginx HTTP` to allow only port 80 or change it to `Nginx HTTPS` to allow only port 443
@@ -78,25 +93,14 @@ sudo ufw allow 'Nginx Full'
 ```
 
 4. Next you will need to edit the default Nginx configuration file in `/etc/nginx/sites-enabled/default`, using the [example nginx config](../master/signal-server/example-nginx.conf)
-6. Reload your nginx to apply the new configuration
-```
-sudo nginx -s reload
-```
+5. Update your nginx config to suits your need, you can take a look at the [example here](../master/signal-server/example-nginx.conf).
 
-7. Run certbot to generate SSL Certificate
-```
-certbot --nginx -d domain.com -d www.domain.com
-```
-
-8. When asked `Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.` You are recommended to choose `2: Redirect`. After the process is done your certificate will be located in
-9. Update your nginx config to suits your need, you can take a look at the [example here](../master/signal-server/example-nginx.conf).
-
-10. Check if your configuration is correct
+6. Check if your configuration is correct
 ```
 sudo nginx -t
 ```
 
-11. If there's no error, you can reload your nginx to apply the new configuration
+7. If there's no error, you can reload your nginx to apply the new configuration
 ```
 sudo nginx -s reload
 ```

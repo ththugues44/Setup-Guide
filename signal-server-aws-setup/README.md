@@ -1,5 +1,5 @@
 # Amazon Web Service (AWS) Setup Guide for Signal
-Currently, Signal use AWS for attachment and CDS queue. However you can skip this step if you don't want to use AWS, I wrote another guide on replacing S3 & CDN with Minio. But if you need AWS here you go.
+Signal use AWS for attachment and CDS queue. However you can skip this step if you don't want to use AWS, I wrote another guide on replacing S3 & CDN with Minio. But if you need AWS here you go.
 
 ## IAM for Access Key & Secret
 1. Login to AWS Console and click on your name, select on `My Security Credentials`.
@@ -14,7 +14,7 @@ Currently, Signal use AWS for attachment and CDS queue. However you can skip thi
 
 ## S3 for Attachments & Profile Picture
 
-1. Login to AWS Console and search for `S3`.
+1. Search for `S3`.
 
 2. Click on `Create Bucket`.
 

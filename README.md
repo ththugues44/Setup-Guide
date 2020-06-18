@@ -1,5 +1,8 @@
-# Setup Guide for Signal
-On this repository, you will find guides about Signal Setup that will help you run your own signal server.
+# On-Premise Signal Setup Guide
+
+This guide is a community collaboration effort to setup on-premise (self-hosted) Signal Server.
+
+*Signal™ is a trademark of Quiet Riddle Ventures LLC. The SecureSign projects are not affliated with Signal.org, Signal Messenger LLC, nor Signal Foundation.*
 
 ## Requirements
 * Twilio (For SMS OTP)

@@ -92,8 +92,8 @@ openssl req -new -x509 -key /etc/nginx/cert.key -out /etc/nginx/cert.crt -days 3
 sudo ufw allow 'Nginx HTTPS'
 ```
 
-4. Next you will need to edit the default Nginx configuration file in `/etc/nginx/sites-enabled/default`, using the [example nginx config](../master/signal-server/example-nginx.conf)
-5. Update your nginx config to suits your need, you can take a look at the [example here](../master/signal-server/example-nginx.conf).
+4. Next you will need to edit the default Nginx configuration file in `/etc/nginx/sites-enabled/default`, using the [example nginx config](../signal-server/example-nginx.conf)
+5. Update your nginx config to suits your need, you can take a look at the [example here](../signal-server/example-nginx.conf).
 
 6. Check if your configuration is correct
 ```

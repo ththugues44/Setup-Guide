@@ -2,7 +2,7 @@
 
 This guide is a community collaboration effort to setup on-premise (self-hosted) Signal Server.
 
-*Signal™ is a trademark of Quiet Riddle Ventures LLC. The SecureSign projects are not affliated with Signal.org, Signal Messenger LLC, nor Signal Foundation.*
+*Signal™ is a trademark of Quiet Riddle Ventures LLC. This projects is not affliated with Signal.org, Signal Messenger LLC, nor Signal Foundation.*
 
 ## Requirements
 * Twilio (For SMS OTP)

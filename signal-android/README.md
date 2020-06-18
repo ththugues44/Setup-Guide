@@ -3,8 +3,7 @@ This guide is written by using Signal-Android branch Master version 4.53.6
 
 ## Requirement
 * Android Studio 3.5
-* JRE 1.8.0 
-* JVM OpenJDK 64
+* Java SE 14
 * SDK 28
 * NDK
 

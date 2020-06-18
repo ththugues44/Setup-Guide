@@ -19,7 +19,7 @@
 git clone https://github.com/signalapp/Signal-Server.git && cd Signal-Server
 ```
 
-2. Create your own `config.yml`, put it inside `signal-server/service/config/`. You can take a look at the [example here](../master/signal-server/example-signal.yml).
+2. Create your own `config.yml`, put it inside `signal-server/service/config/`. You can take a look at the [example here](../signal-server/example-signal.yml).
 
 3. Build the server
 
@@ -39,7 +39,7 @@ Use the Private key to generate certificate (id can be random, i use 1234)
 java -jar service/target/TextSecureServer-2.92.jar certificate --key <priv_key_from_step_above> --id 1234
 ```
 
-4.	Run **postgres**, **redis**, **coturn** (I suggest you use [signal-docker](../master/signal-docker))
+4.	Run **postgres**, **redis**, **coturn** (I suggest you use [signal-docker](../signal-docker))
 5.	Create databases ()
 6.	Migrate databases:
 ```
@@ -87,9 +87,9 @@ And the certificate:
 openssl req -new -x509 -key /etc/nginx/cert.key -out /etc/nginx/cert.crt -days 3650 -subj /CN=domain.com -extensions SAN -config 'configuration.conf'
 ```
 
-3. Allow Nginx to be accessed from outside using Firewall. The `Nginx Full` argument will create a rule that allow port 80 and port 443, you can change it to `Nginx HTTP` to allow only port 80 or change it to `Nginx HTTPS` to allow only port 443
+3. Allow Nginx to be accessed from outside using Firewall.
 ```
-sudo ufw allow 'Nginx Full'
+sudo ufw allow 'Nginx HTTPS'
 ```
 
 4. Next you will need to edit the default Nginx configuration file in `/etc/nginx/sites-enabled/default`, using the [example nginx config](../master/signal-server/example-nginx.conf)

@@ -15,10 +15,9 @@ What's proven works
 * [Signal Server](../master/signal-server)
 * [Server dependencies: PostgreSQL & Redis](../master/signal-docker)
 * [Turn Server](../master/turn-server)
-* Nginx Server (Port Forwarding HTTPS to Signal Server Port)
 * [Signal Android](../master/signal-android)
-* Signal Desktop
-* Signal IOS
+* [Signal iOS](../master/signal-ios)
+* [Signal Desktop](../master/signal-desktop)
 
 Work in progress
 * Contact Discovery Service (CDS), you still can use your signal server without CDS.
